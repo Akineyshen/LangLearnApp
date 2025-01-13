@@ -7,3 +7,7 @@ przy pomocy codziennych wyzwań i umożliwia powtórki słów, z którymi użytk
 sprawdzić znajomość słów na podstawie wybranych zestawów. Użytkownik może tworzyć zestawy słówek, grupować je w
 kategorie (np. „Podróże”, „Zakupy”), śledzić postępy w nauce i generować raporty. Aplikacja oferuje eksport
 i import danych.**
+
+#### Wszystkie pliki robocze projektu znajdują się w następującej ścieżce: `land/src`
+
+![Tablica](screenshots/Tablica.png)
