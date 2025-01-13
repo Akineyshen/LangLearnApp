@@ -8,7 +8,7 @@ sprawdzić znajomość słów na podstawie wybranych zestawów. Użytkownik moż
 kategorie (np. „Podróże”, „Zakupy”), śledzić postępy w nauce i generować raporty. Aplikacja oferuje eksport
 i import danych.
 
-### Wszystkie pliki robocze projektu znajdują się w następującej ścieżce: `land/src`
+### Wszystkie pliki robocze projektu znajdują się w następującej ścieżce: `lang/src`
 
 ## Diagram klas UML
 ![Tablica](screenshots/Tablica.png)
