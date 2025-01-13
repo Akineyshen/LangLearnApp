@@ -7,6 +7,6 @@ public class StartedDayState implements State {
 
     @Override
     public void handle() {
-        System.out.println("The day has begun. You can do the exercises.");
+        System.out.println("Dzień się rozpoczął. Możesz wykonywać ćwiczenia.");
     }
 }

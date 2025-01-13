@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.Set;
 
 public class RepeatBadOnes {
-    public Set<IExercise> set; // Набор упражнений
-    public List<String> incorrectUserAnswers; // Неправильные ответы пользователя
+    public Set<IExercise> set;
+    public List<String> incorrectUserAnswers;
 
     public RepeatBadOnes() {
         this.set = new HashSet<>();
@@ -21,27 +21,24 @@ public class RepeatBadOnes {
         }
     }
 
-    // Select exercise type (example)
     public void selectExerciseForm() {
         for (IExercise exercise : set) {
             exercise.createExec();
         }
     }
 
-    // Compare improvements
     public void compareImproved(List<String> newAnswers, List<String> correctAnswers) {
         int improvedCount = 0;
 
         for (int i = 0; i < newAnswers.size(); i++) {
             String newAnswer = newAnswers.get(i);
 
-            // If the new answer matches the correct one, it is considered corrected
             if (newAnswer.equalsIgnoreCase(correctAnswers.get(i))) {
                 improvedCount++;
             }
         }
 
-        System.out.println("Corrected answers: " + improvedCount);
+        System.out.println("Poprawione odpowiedzi: " + improvedCount);
     }
 
 }

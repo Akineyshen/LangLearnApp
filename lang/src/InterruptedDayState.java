@@ -7,6 +7,6 @@ public class InterruptedDayState implements State {
 
     @Override
     public void handle() {
-        System.out.println("The day was interrupted. The exercises are not completed.");
+        System.out.println("Dzień został przerwany. Ćwiczenia nie zostały ukończone.");
     }
 }

@@ -9,7 +9,7 @@ public class FiszkaExercise implements IExercise {
 
     @Override
     public void createExec() {
-        System.out.println("Exercise created: Card.");
+        System.out.println("Ćwiczenie utworzone: Karta.");
     }
 
     @Override
@@ -18,7 +18,7 @@ public class FiszkaExercise implements IExercise {
     }
 
     public void showAnswer() {
-        System.out.println("Word: " + word);
-        System.out.println("Translation: " + translation);
+        System.out.println("Słowo: " + word);
+        System.out.println("Tłumaczenie: " + translation);
     }
 }

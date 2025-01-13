@@ -7,6 +7,6 @@ public class FinishedExercisesState implements State {
 
     @Override
     public void handle() {
-        System.out.println("All exercises are completed. The day is over.");
+        System.out.println("Wszystkie ćwiczenia zostały ukończone. Dzień dobiegł końca.");
     }
 }

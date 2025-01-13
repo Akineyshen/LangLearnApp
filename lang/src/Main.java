@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Create exercise factories
         ExerciseFactory correctFactory = new CorrectTranslationFactory(
                 "dog",
                 new String[]{"pies", "kot", "ptach"},
@@ -13,16 +12,12 @@ public class Main {
         ExerciseFactory fiszkaFactory = new FiszkaFactory("cat", "kot");
         ExerciseFactory inputFactory = new InputTranslationFactory("cat", "kot");
 
-        // Create a report collector
         RaportCollector raportCollector = new RaportCollector();
 
-        // Create an object to repeat incorrect answers
         RepeatBadOnes repeatBadOnes = new RepeatBadOnes();
 
-        // Create a daily exercise
         DailyExercise dailyExercise = new DailyExercise(raportCollector);
 
-        // Create exercises through factories and add them to DailyExercise
         IExercise correctExercise = correctFactory.createExercise();
         IExercise fiszkaExercise = fiszkaFactory.createExercise();
         IExercise inputExercise = inputFactory.createExercise();
@@ -31,7 +26,6 @@ public class Main {
         dailyExercise.addExercise(fiszkaExercise);
         dailyExercise.addExercise(inputExercise);
 
-        // Start doing the exercises
         dailyExercise.startExercise();
 
         List<IExercise> allExercises = Arrays.asList(correctExercise, fiszkaExercise, inputExercise);
@@ -45,7 +39,7 @@ public class Main {
                 CorrectTranslationExercise correctEx = (CorrectTranslationExercise) exercise;
                 correctEx.displayOptions();
 
-                System.out.print("Enter your answer number: ");
+                System.out.print("Wpisz numer swojej odpowiedzi:");
                 int userChoice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -56,16 +50,16 @@ public class Main {
                 dailyExercise.completeExercise(exercise, isCorrect);
 
                 if (!isCorrect) {
-                    System.out.println("Wrong. Correct answer: " + correctEx.correctAnswer);
+                    System.out.println("Niepoprawnie. Poprawna odpowiedź: " + correctEx.correctAnswer);
                 } else {
-                    System.out.println("Correct answer!");
+                    System.out.println("Poprawna odpowiedź!");
                 }
 
             } else if (exercise instanceof FiszkaExercise) {
                 FiszkaExercise fiszkaEx = (FiszkaExercise) exercise;
                 fiszkaEx.showAnswer();
 
-                System.out.print("Enter word translation: ");
+                System.out.print("Wpisz tłumaczenie słowa: ");
                 String userAnswer = scanner.nextLine();
                 userAnswers.add(userAnswer);
 
@@ -73,15 +67,15 @@ public class Main {
                 dailyExercise.completeExercise(exercise, isCorrect);
 
                 if (!isCorrect) {
-                    System.out.println("Wrong. Correct answer: " + fiszkaEx.translation);
+                    System.out.println("Niepoprawnie. Poprawna odpowiedź: " + fiszkaEx.translation);
                 } else {
-                    System.out.println("Correct answer!");
+                    System.out.println("Poprawna odpowiedź!");
                 }
 
             } else if (exercise instanceof InputTranslationExercise) {
                 InputTranslationExercise inputEx = (InputTranslationExercise) exercise;
 
-                System.out.print("Enter the translation of " + inputEx.wordToTranslate + ": ");
+                System.out.print("Wpisz tłumaczenie dla " + inputEx.wordToTranslate + ": ");
                 String userAnswer = scanner.nextLine();
                 inputEx.inputAnswer(userAnswer);
                 userAnswers.add(userAnswer);
@@ -90,19 +84,17 @@ public class Main {
                 dailyExercise.completeExercise(exercise, isCorrect);
 
                 if (!isCorrect) {
-                    System.out.println("Wrong. Correct answer: " + inputEx.correctAnswer);
+                    System.out.println("Niepoprawnie. Poprawna odpowiedź: " + inputEx.correctAnswer);
                 } else {
-                    System.out.println("Correct answer!");
+                    System.out.println("Poprawna odpowiedź!");
                 }
             }
         }
 
-        // Mark incorrect answers
         repeatBadOnes.markBadOnes(allExercises, userAnswers, correctAnswers);
 
-        // Repeat exercises with errors
-        List<String> newAnswers = new ArrayList<>(); // Для хранения новых ответов
-        System.out.println("Repeating exercises with mistakes:");
+        List<String> newAnswers = new ArrayList<>();
+        System.out.println("Powtarzanie ćwiczeń z błędami:");
         for (IExercise exercise : repeatBadOnes.set) {
             exercise.createExec();
 
@@ -110,54 +102,52 @@ public class Main {
                 CorrectTranslationExercise correctEx = (CorrectTranslationExercise) exercise;
                 correctEx.displayOptions();
 
-                System.out.print("Enter your answer number: ");
+                System.out.print("Wpisz numer swojej odpowiedzi: ");
                 int userChoice = scanner.nextInt();
                 scanner.nextLine();
 
                 String userAnswer = correctEx.possibleAnswers[userChoice - 1];
-                newAnswers.add(userAnswer); // Save the new answer
+                newAnswers.add(userAnswer);
 
                 if (exercise.checkAnswer(userAnswer)) {
-                    System.out.println("Correct answer!");
+                    System.out.println("Poprawna odpowiedź!");
                 } else {
-                    System.out.println("Wrong. Correct answer: " + correctEx.correctAnswer);
+                    System.out.println("Niepoprawnie. Poprawna odpowiedź: " + correctEx.correctAnswer);
                 }
 
             } else if (exercise instanceof FiszkaExercise) {
                 FiszkaExercise fiszkaEx = (FiszkaExercise) exercise;
                 fiszkaEx.showAnswer();
 
-                System.out.print("Enter word translation: ");
+                System.out.print("Wpisz tłumaczenie słowa: ");
                 String userAnswer = scanner.nextLine();
                 newAnswers.add(userAnswer);
 
                 if (exercise.checkAnswer(userAnswer)) {
-                    System.out.println("Correct answer!");
+                    System.out.println("Poprawna odpowiedź!");
                 } else {
-                    System.out.println("Wrong. Correct answer: " + fiszkaEx.translation);
+                    System.out.println("Niepoprawnie. Poprawna odpowiedź: " + fiszkaEx.translation);
                 }
 
             } else if (exercise instanceof InputTranslationExercise) {
                 InputTranslationExercise inputEx = (InputTranslationExercise) exercise;
 
-                System.out.print("Enter translation: ");
+                System.out.print("Wpisz tłumaczenie: ");
                 String userAnswer = scanner.nextLine();
                 newAnswers.add(userAnswer);
 
                 if (exercise.checkAnswer(userAnswer)) {
-                    System.out.println("Correct answer!");
+                    System.out.println("Poprawna odpowiedź!");
                 } else {
-                    System.out.println("Wrong. Correct answer: " + inputEx.correctAnswer);
+                    System.out.println("Niepoprawnie. Poprawna odpowiedź: " + inputEx.correctAnswer);
                 }
             }
         }
 
-        // Compare improvements
         repeatBadOnes.compareImproved(newAnswers, correctAnswers);
 
 
-        // Generate the final report
         raportCollector.generateRaport();
-        System.out.println("Exercises completed!");
+        System.out.println("Ćwiczenia zakończone!");
     }
 }

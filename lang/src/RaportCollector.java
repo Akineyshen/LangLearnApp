@@ -5,20 +5,17 @@ public class RaportCollector {
     private int numberOfExercises;
     private int numberOfImproved;
 
-    // Increase the number of exercises
     public void incrementExercises() {
         numberOfExercises++;
     }
 
-    // Increase the number of improvements
     public void incrementImproved() {
         numberOfImproved++;
     }
 
-    // Report generation
     public void generateRaport() {
-        System.out.println("Report:");
-        System.out.println("Total exercises: " + numberOfExercises);
-        System.out.println("Completed: " + numberOfImproved);
+        System.out.println("Raport:");
+        System.out.println("Łączna liczba ćwiczeń: " + numberOfExercises);
+        System.out.println("Ukończone: " + numberOfImproved);
     }
 }

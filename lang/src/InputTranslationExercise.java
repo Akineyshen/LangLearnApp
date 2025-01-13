@@ -10,17 +10,15 @@ public class InputTranslationExercise implements IExercise {
 
     @Override
     public void createExec() {
-        System.out.println("Exercise created: Enter the translation of the word." );
+        System.out.println("Ćwiczenie utworzone: Wpisz tłumaczenie słowa." );
     }
 
-    // Method to save user input
     public void inputAnswer(String input) {
-        this.userInput = input; // Сохранение ввода пользователя
+        this.userInput = input;
     }
 
     @Override
     public boolean checkAnswer(String userAnswer) {
-        // Check if the answer is correct
         return userAnswer.equalsIgnoreCase(correctAnswer);
     }
 }

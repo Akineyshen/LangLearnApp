@@ -11,11 +11,11 @@ public class CorrectTranslationExercise implements IExercise {
 
     @Override
     public void createExec() {
-        System.out.println("Exercise created: Choose the correct translation.");
+        System.out.println("Ćwiczenie utworzone: Wybierz poprawne tłumaczenie.");
     }
 
     public void displayOptions() {
-        System.out.println("Select a translation for the word: " + word);
+        System.out.println("Wybierz tłumaczenie dla słowa: " + word);
         for (int i = 0; i < possibleAnswers.length; i++) {
             System.out.println((i + 1) + ". " + possibleAnswers[i]);
         }

@@ -10,11 +10,11 @@ class ProxyExercise implements IExercise {
         this.cacheKey = cacheKey;
         if (cache.containsKey(cacheKey)) {
             this.exercise = cache.get(cacheKey);
-            System.out.println("Loading an exercise from cache: " + cacheKey);
+            System.out.println("Ładowanie ćwiczenia z pamięci podręcznej: " + cacheKey);
         } else {
             this.exercise = factory.createExercise();
             cache.put(cacheKey, this.exercise);
-            System.out.println("Creating a new exercise and saving it to cache: " + cacheKey);
+            System.out.println("Tworzenie nowego ćwiczenia i zapisywanie go w pamięci podręcznej: " + cacheKey);
         }
     }
 
@@ -25,11 +25,11 @@ class ProxyExercise implements IExercise {
 
     @Override
     public boolean checkAnswer(String userAnswer) {
-        return exercise.checkAnswer(userAnswer); // Delegation of response verification
+        return exercise.checkAnswer(userAnswer);
     }
 
     public static void clearCache() {
         cache.clear();
-        System.out.println("The cache has been cleared.");
+        System.out.println("Pamięć podręczna została wyczyszczona.");
     }
 }

@@ -9,7 +9,7 @@ public class DailyExercise {
     public DailyExercise(RaportCollector raportCollector) {
         this.raportCollector = raportCollector;
         this.exercises = new HashSet<>();
-        this.currentState = new StartedDayState(this); // Начальное состояние
+        this.currentState = new StartedDayState(this);
     }
 
     public void setState(State state) {
@@ -27,18 +27,18 @@ public class DailyExercise {
     public void completeExercise(IExercise exercise, boolean isCorrect) {
         exercises.remove(exercise);
         if (isCorrect) {
-            raportCollector.incrementImproved(); // Увеличить количество правильных ответов
+            raportCollector.incrementImproved();
         }
-        raportCollector.incrementExercises(); // Увеличить общее количество упражнений
+        raportCollector.incrementExercises();
 
         if (exercises.isEmpty()) {
-            setState(new FinishedExercisesState(this)); // Переход в состояние завершения
+            setState(new FinishedExercisesState(this));
         }
     }
 
     public void interruptDay() {
-        setState(new InterruptedDayState(this)); // Переход в состояние "день прерван"
-        currentState.handle(); // Обработка состояния
+        setState(new InterruptedDayState(this));
+        currentState.handle();
     }
 
 }
