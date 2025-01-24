@@ -1,44 +1,27 @@
-import java.util.HashSet;
-import java.util.Set;
-
 public class DailyExercise {
     private State currentState;
-    private Set<IExercise> exercises;
-    private RaportCollector raportCollector;
 
-    public DailyExercise(RaportCollector raportCollector) {
-        this.raportCollector = raportCollector;
-        this.exercises = new HashSet<>();
-        this.currentState = new StartedDayState(this);
+    public DailyExercise() {
+        this.currentState = new StartedDayState(); // Начинаем с начального состояния
     }
 
     public void setState(State state) {
         this.currentState = state;
     }
 
-    public void addExercise(IExercise exercise) {
-        exercises.add(exercise);
+    public void handle() {
+        currentState.handle(this); // Передаем управление состоянию
     }
 
     public void startExercise() {
-        currentState.handle();
+        System.out.println("Ćwiczenie rozpoczęte!");
     }
 
-    public void completeExercise(IExercise exercise, boolean isCorrect) {
-        exercises.remove(exercise);
-        if (isCorrect) {
-            raportCollector.incrementImproved();
-        }
-        raportCollector.incrementExercises();
-
-        if (exercises.isEmpty()) {
-            setState(new FinishedExercisesState(this));
-        }
+    public void interruptExercise() {
+        System.out.println("Ćwiczenie przerwane!");
     }
 
-    public void interruptDay() {
-        setState(new InterruptedDayState(this));
-        currentState.handle();
+    public void finishExercise() {
+        System.out.println("Ćwiczenie zakończone!");
     }
-
 }

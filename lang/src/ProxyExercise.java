@@ -32,4 +32,15 @@ class ProxyExercise implements IExercise {
         cache.clear();
         System.out.println("Pamięć podręczna została wyczyszczona.");
     }
+
+    @Override
+    public String getState() {
+        return exercise.getState();
+    }
+
+    @Override
+    public void setState(String state) {
+        exercise.setState(state);
+    }
+
 }

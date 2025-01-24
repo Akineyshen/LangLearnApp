@@ -1,3 +1,3 @@
 public interface State {
-    void handle();
+    void handle(DailyExercise context);
 }

@@ -9,6 +9,6 @@ public class InputTranslationFactory extends ExerciseFactory {
 
     @Override
     public IExercise createExercise() {
-        return new InputTranslationExercise(wordToTranslate, correctAnswer);
+        return new InputTranslationExercise(correctAnswer, wordToTranslate);
     }
 }

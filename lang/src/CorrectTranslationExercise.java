@@ -12,6 +12,15 @@ public class CorrectTranslationExercise implements IExercise {
     @Override
     public void createExec() {
         System.out.println("Ćwiczenie utworzone: Wybierz poprawne tłumaczenie.");
+        displayOptions();  // Выводим варианты ответа
+    }
+
+    public String getWordToTranslate() {
+        return word;
+    }
+
+    public String[] getPossibleAnswers() {
+        return possibleAnswers;
     }
 
     public void displayOptions() {
@@ -24,5 +33,21 @@ public class CorrectTranslationExercise implements IExercise {
     @Override
     public boolean checkAnswer(String userAnswer) {
         return userAnswer.equalsIgnoreCase(correctAnswer);
+    }
+
+    // Добавляем метод для сохранения состояния
+    @Override
+    public String getState() {
+        // Сохраняем состояние в строке формата: "word;correctAnswer"
+        return word + ";" + correctAnswer;
+    }
+
+    // Добавляем метод для восстановления состояния
+    @Override
+    public void setState(String state) {
+        // Восстанавливаем состояние из строки
+        String[] parts = state.split(";");
+        this.word = parts[0];
+        this.correctAnswer = parts[1];
     }
 }
